@@ -21,6 +21,7 @@
       config.allowUnfree = true;
       overlays = [
         (import ./nix/overlays/ledger-ssh-agent.nix)
+        (import ./nix/overlays/ledger-agent.nix)
       ];
     };
   in
@@ -44,6 +45,7 @@
           home-manager.users.wikigen = import ./home.nix;
           nixpkgs.overlays = [
             (import ./nix/overlays/ledger-ssh-agent.nix)
+            (import ./nix/overlays/ledger-agent.nix)
           ];
         }
       ];

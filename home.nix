@@ -19,6 +19,7 @@
 
     # Ledger Hardware Security
     ledger-ssh-agent  # SSH agent for Ledger hardware wallets
+    ledger-agent      # Ledger SSH/GPG agent from trezor-agent
   ];
 
   # Shell configuration
