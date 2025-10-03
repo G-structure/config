@@ -7,3 +7,6 @@
 [submodule "extern/trezor-agent"]
 	path = extern/trezor-agent
 	url = https://github.com/romanz/trezor-agent.git
+[submodule "extern/notes"]
+	path = extern/notes
+	url = git@github.com:G-structure/notes.git

@@ -11,6 +11,9 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    shellAliases = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
+      git = "ledger-agent wikigen@wikigens-MacBook-Pro -- git";
+    };
     initContent = ''
       # Colima autostart
       if command -v colima &>/dev/null; then
