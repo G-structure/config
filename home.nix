@@ -22,11 +22,13 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    initContent = ''
+    initExtra = ''
       # Colima autostart
-      if ! colima status &>/dev/null; then
-        echo "Starting Colima..."
-        colima start --cpu 4 --memory 8 --disk 100
+      if command -v colima &>/dev/null; then
+        if ! colima status &>/dev/null; then
+          echo "Starting Colima..."
+          colima start --cpu 4 --memory 8 --disk 100
+        fi
       fi
     '';
   };

@@ -14,6 +14,11 @@ mv ~/.zshrc ~/.zshrc.backup
 sudo nix run nix-darwin -- switch --flake .#wikigen-mac
 ```
 
+3. After that
+```
+sudo darwin-rebuild switch --flake .#wikigen-mac
+```
+
 ## Refrence
 - [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer)
 - [Colima](https://github.com/abiosoft/colima)

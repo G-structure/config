@@ -1,0 +1,10 @@
+{
+  "name": "ai-cli-bundle",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bundle of pinned npm CLIs for AI tools (Claude Code, Codex, OpenCode)",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "latest",
+    "@modelcontextprotocol/inspector": "latest"
+  }
+}

@@ -13,9 +13,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }: {
+  outputs = { self, nixpkgs, darwin, home-manager, ... }:
+  let
+    system = "aarch64-darwin";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in
+  {
+    # Expose the ai-clis package
+    packages.${system} = {
+      ai-clis = pkgs.callPackage ./nix/packages/ai-clis.nix { };
+      default = self.packages.${system}.ai-clis;
+    };
+
     darwinConfigurations."wikigen-mac" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+      inherit system;
       modules = [
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
@@ -26,6 +40,7 @@
           home-manager.users.wikigen = import ./home.nix;
         }
       ];
+      specialArgs = { inherit self; };
     };
   };
 }

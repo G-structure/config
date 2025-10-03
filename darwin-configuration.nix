@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 
 {
   # Basic system settings
@@ -19,6 +19,8 @@
     vim
     curl
     wget
+    # AI CLI tools (Claude Code, MCP Inspector, etc.)
+    self.packages.aarch64-darwin.ai-clis
   ];
 
   # Homebrew for Colima (since it's macOS-specific)
