@@ -33,6 +33,17 @@ except ImportError:
           hash = "sha256-A3WdhiAarTCJLWJEvwN8/PwMtiYLUYlUcuqJrGobeFc=";
         };
 
+        # Patch ledger.py to fix GPG signing with newer Ledger app versions
+        postPatch = ''
+          # Fix GPG signing by disabling end-of-frame byte for GPG operations
+          # The Ledger SSH/GPG Agent app doesn't properly support the end-of-frame
+          # byte for GPG signing (instruction 0x08), only for SSH (instruction 0x04)
+          substituteInPlace libagent/device/ledger.py \
+            --replace-fail \
+              "if offset + chunk_size == len(blob) and self.ledger_app_supports_end_of_frame_byte:" \
+              "if offset + chunk_size == len(blob) and self.ledger_app_supports_end_of_frame_byte and identity.identity_dict['proto'] == 'ssh':"
+        '';
+
         propagatedBuildInputs = with pyFinal; [
           bech32
           cryptography

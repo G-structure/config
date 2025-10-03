@@ -39,8 +39,20 @@
 
   programs.git = {
     enable = true;
-    userName = "wikigen";
-    userEmail = "wikigen@example.com";  # Update this
+    userName = "Luc Chartier";
+    userEmail = "luc@distorted.media";
+
+    # GPG signing with Ledger hardware wallet
+    signing = {
+      key = "D2A7EC63E350CC488197CB2ED369B07E00FB233E";
+      signByDefault = true;
+    };
+
+    extraConfig = {
+      gpg.program = "${pkgs.writeShellScript "gpg-ledger" ''
+        exec ${pkgs.gnupg}/bin/gpg --homedir $HOME/.gnupg-ledger "$@"
+      ''}";
+    };
   };
 
   # GPG configuration for Ledger OpenPGP card
