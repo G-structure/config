@@ -11,9 +11,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }:
+  outputs = { self, nixpkgs, darwin, home-manager, sops-nix, ... }:
   let
     system = "aarch64-darwin";
     pkgs = import nixpkgs {
@@ -38,6 +42,7 @@
       modules = [
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
+        sops-nix.darwinModules.sops
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

@@ -1,0 +1,18 @@
+# SOPS Configuration for Ledger GPG Key
+#
+# This configures SOPS to use your Ledger hardware wallet for encryption/decryption.
+# Your GPG key is stored on the Ledger device and never exposed to the computer.
+#
+# Key: D2A7EC63E350CC488197CB2ED369B07E00FB233E
+# Identity: Luc Chartier <luc@distorted.media>
+
+creation_rules:
+  # Default rule for all secret files
+  - path_regex: .*\.(yaml|json|env|ini)$
+    pgp: >-
+      D2A7EC63E350CC488197CB2ED369B07E00FB233E
+
+  # Secrets in nix/secrets/ directory
+  - path_regex: nix/secrets/.*\.yaml$
+    pgp: >-
+      D2A7EC63E350CC488197CB2ED369B07E00FB233E

@@ -14,6 +14,22 @@
   # Disable nix-darwin's Nix management (using Determinate Nix)
   nix.enable = false;
 
+  # SOPS secrets management
+  # Uses Ledger GPG key for encryption/decryption
+  sops = {
+    # Set GNUPGHOME so SOPS can find the Ledger GPG key
+    gnupg.home = "~/.gnupg-ledger";
+
+    # Default secrets file (can be overridden per secret)
+    defaultSopsFile = ./nix/secrets/secrets.yaml;
+  };
+
+  # Environment variables for SOPS/GPG
+  environment.variables = {
+    # Point SOPS to the Ledger GPG keyring
+    GNUPGHOME = "/Users/wikigen/.gnupg-ledger";
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     git
