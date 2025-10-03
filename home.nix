@@ -49,18 +49,28 @@
     };
 
     extraConfig = {
-      gpg.program = "${pkgs.writeShellScript "gpg-ledger" ''
-        # Set GNUPGHOME for ledger GPG
-        export GNUPGHOME=$HOME/.gnupg-ledger
+      gpg = {
+        program = "${pkgs.writeShellScript "gpg-ledger" ''
+          # Ensure ledger-gpg-agent is running
+          if ! pgrep -f "ledger-gpg-agent.*--homedir.*\.gnupg-ledger" > /dev/null; then
+            ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
+            sleep 2
+          fi
 
-        # Ensure ledger-gpg-agent is running with correct GNUPGHOME
-        if ! pgrep -f "ledger-gpg-agent.*--homedir.*\.gnupg-ledger" > /dev/null; then
-          GNUPGHOME=$HOME/.gnupg-ledger ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --daemon &
-          sleep 2
-        fi
+          # Use --homedir flag instead of GNUPGHOME
+          exec ${pkgs.gnupg}/bin/gpg --homedir $HOME/.gnupg-ledger "$@"
+        ''}";
+        openpgp.program = "${pkgs.writeShellScript "gpg-ledger" ''
+          # Ensure ledger-gpg-agent is running
+          if ! pgrep -f "ledger-gpg-agent.*--homedir.*\.gnupg-ledger" > /dev/null; then
+            ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
+            sleep 2
+          fi
 
-        exec ${pkgs.gnupg}/bin/gpg "$@"
-      ''}";
+          # Use --homedir flag instead of GNUPGHOME
+          exec ${pkgs.gnupg}/bin/gpg --homedir $HOME/.gnupg-ledger "$@"
+        ''}";
+      };
     };
   };
 
