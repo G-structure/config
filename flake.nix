@@ -54,6 +54,9 @@
               (import ./nix/overlays/ledger-agent.nix)
             ];
           };
+
+          # Starlight documentation setup
+          starlightSetup = import ./nix/modules/starlight.nix { inherit pkgs system; };
         in
         {
           # Packages available via `nix build`
@@ -64,21 +67,35 @@
             default = self.packages.${system}.ai-clis;
           };
 
-          # Development shell
-          devShells.default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              git
-              vim
-              curl
-              wget
-              jq
-              yq
-            ];
-            shellHook = ''
-              echo "WikiGen's Nix Dev Environment"
-              echo "System: ${system}"
-            '';
+          # Development shells
+          devShells = {
+            default = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                git
+                vim
+                curl
+                wget
+                jq
+                yq
+              ];
+              shellHook = ''
+                echo "WikiGen's Nix Dev Environment"
+                echo "System: ${system}"
+              '';
+            };
+
+            # Documentation development shell
+            docs = pkgs.mkShell {
+              buildInputs = starlightSetup.buildInputs ++ (with pkgs; [
+                git
+                just
+              ]);
+              shellHook = starlightSetup.shellHook;
+            };
           };
+
+          # Apps for documentation
+          apps = starlightSetup.apps;
         };
 
       flake = {

@@ -1,4 +1,7 @@
-# Getting Started
+---
+title: Getting Started
+---
+
 
 Welcome to your Nix configuration! This section will get you up and running quickly.
 

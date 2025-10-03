@@ -1,4 +1,7 @@
-# Linux (NixOS) Deployment
+---
+title: Linux (NixOS) Deployment
+---
+
 
 Guide to deploying this configuration on NixOS.
 

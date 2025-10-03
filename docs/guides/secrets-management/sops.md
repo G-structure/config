@@ -1,4 +1,7 @@
-# SOPS Secret Management with Ledger
+---
+title: SOPS Secret Management with Ledger
+---
+
 
 This guide explains how to use SOPS (Secrets OPerationS) for secure secret management in your Nix configuration, using your Ledger hardware wallet for encryption and decryption.
 

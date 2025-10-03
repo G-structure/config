@@ -1,4 +1,7 @@
-# Nix Configuration Structure: Modular Multi-Platform Architecture
+---
+title: "Nix Configuration Structure: Modular Multi-Platform Architecture"
+---
+
 
 A comprehensive guide to understanding and extending this modular Nix configuration supporting macOS (Darwin), Linux (NixOS), and cloud deployments (AWS EC2, GCP GCE).
 

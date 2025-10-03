@@ -1,4 +1,7 @@
-# macOS (Darwin) Deployment
+---
+title: macOS (Darwin) Deployment
+---
+
 
 Complete guide to deploying this Nix configuration on macOS.
 

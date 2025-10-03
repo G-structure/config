@@ -1,4 +1,7 @@
-# Creating Profiles
+---
+title: Creating Profiles
+---
+
 
 Learn how to build reusable feature profiles for your Nix configuration.
 

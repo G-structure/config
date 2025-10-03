@@ -1,4 +1,7 @@
-# Secrets Management
+---
+title: Secrets Management
+---
+
 
 Secure secrets management with SOPS and hardware wallet encryption.
 

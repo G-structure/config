@@ -1,4 +1,7 @@
-# GPG Signing with Ledger Hardware Wallet
+---
+title: GPG Signing with Ledger Hardware Wallet
+---
+
 
 This document describes how to use your Ledger hardware wallet for GPG signing, including git commit signatures, message signing, and file encryption.
 

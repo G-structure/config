@@ -1,4 +1,7 @@
-# Hardware-backed PGP, SOPS, and SSH: Complete Guide
+---
+title: "Hardware-backed PGP, SOPS, and SSH: Complete Guide"
+---
+
 
 A comprehensive guide to using hardware security keys (YubiKey, Nitrokey, Ledger, Trezor) for PGP signing/encryption, SSH authentication, and SOPS secret management — with a focus on Nix/NixOS integration and GitOps workflows.
 

@@ -1,4 +1,7 @@
-# CLI Commands Reference
+---
+title: CLI Commands Reference
+---
+
 
 Quick reference for common Nix and nix-darwin commands.
 

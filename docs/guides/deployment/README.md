@@ -1,4 +1,7 @@
-# Deployment Guides
+---
+title: Deployment Guides
+---
+
 
 Platform-specific deployment guides for this Nix configuration.
 

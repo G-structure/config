@@ -1,4 +1,7 @@
-# Installation Guide
+---
+title: Installation Guide
+---
+
 
 Detailed installation instructions for this Nix configuration on macOS.
 

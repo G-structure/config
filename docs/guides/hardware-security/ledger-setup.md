@@ -1,4 +1,7 @@
-# Ledger Nano S Setup Guide
+---
+title: Ledger Nano S Setup Guide
+---
+
 
 **Goal:** Secure SSH authentication, GPG signing, and SOPS secret management using your Ledger Nano S, all integrated with your Nix flake.
 

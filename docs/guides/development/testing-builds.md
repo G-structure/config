@@ -1,4 +1,7 @@
-# Testing Builds
+---
+title: Testing Builds
+---
+
 
 Learn how to test Nix builds before applying changes to your system.
 

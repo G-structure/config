@@ -1,4 +1,7 @@
-# Development Guides
+---
+title: Development Guides
+---
+
 
 Learn how to extend and customize your Nix configuration.
 

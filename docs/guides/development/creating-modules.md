@@ -1,4 +1,7 @@
-# Creating Modules
+---
+title: Creating Modules
+---
+
 
 Learn how to write custom Nix modules for your configuration.
 

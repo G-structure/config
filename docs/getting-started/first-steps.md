@@ -1,4 +1,7 @@
-# First Steps After Installation
+---
+title: First Steps After Installation
+---
+
 
 Learn how to customize and use your new Nix configuration.
 

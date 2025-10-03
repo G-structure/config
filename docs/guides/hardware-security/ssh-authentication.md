@@ -1,4 +1,7 @@
-# SSH Authentication with Ledger
+---
+title: SSH Authentication with Ledger
+---
+
 
 Use your Ledger hardware wallet for secure SSH authentication.
 

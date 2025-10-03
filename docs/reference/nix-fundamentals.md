@@ -1,4 +1,7 @@
-# Nix Fundamentals Reference
+---
+title: Nix Fundamentals Reference
+---
+
 
 A comprehensive guide to Nix's core concepts: store paths, derivations, evaluation model, and build process.
 

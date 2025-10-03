@@ -1,4 +1,7 @@
-# Adding Packages
+---
+title: Adding Packages
+---
+
 
 Learn how to add software packages to your Nix configuration.
 

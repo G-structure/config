@@ -1,4 +1,7 @@
-# Cloud Deployment
+---
+title: Cloud Deployment
+---
+
 
 Guide to deploying this configuration on AWS EC2 and GCP GCE.
 

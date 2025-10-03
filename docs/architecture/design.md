@@ -1,4 +1,7 @@
-# Nix + Containers + Cloud: Wiki Notes
+---
+title: "Nix + Containers + Cloud: Wiki Notes"
+---
+
 
 A comprehensive, Nix-first playbook for managing macOS (nix-darwin), Linux/NixOS, OCI images, Kubernetes manifests, and cloud infrastructure (AWS EC2 + GCP N2/GCE) — with reproducibility, GitOps, and secrets baked in.
 

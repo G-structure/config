@@ -1,4 +1,7 @@
-# Troubleshooting Guide
+---
+title: Troubleshooting Guide
+---
+
 
 Common issues and solutions for this Nix configuration.
 

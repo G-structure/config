@@ -1,4 +1,7 @@
-# Quickstart Guide
+---
+title: Quickstart Guide
+---
+
 
 Get your Nix configuration up and running in 5 minutes.
 

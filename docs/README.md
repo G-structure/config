@@ -1,4 +1,7 @@
-# Documentation Index
+---
+title: Documentation Index
+---
+
 
 Welcome to the comprehensive documentation for this modular Nix configuration. This guide covers macOS (Darwin), Linux (NixOS), and cloud deployment (AWS EC2, GCP GCE).
 

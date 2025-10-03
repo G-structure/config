@@ -1,4 +1,7 @@
-# Hardware Security Guides
+---
+title: Hardware Security Guides
+---
+
 
 Comprehensive guides for using Ledger hardware wallets with this Nix configuration.
 
