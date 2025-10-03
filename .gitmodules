@@ -10,3 +10,24 @@
 [submodule "extern/notes"]
 	path = extern/notes
 	url = git@github.com:G-structure/notes.git
+[submodule "extern/lucksacks"]
+	path = extern/lucksacks
+	url = https://github.com/r33drichards/lucksacks
+[submodule "extern/bash-agent"]
+	path = extern/bash-agent
+	url = https://github.com/r33drichards/bash-agent
+[submodule "extern/pastebin"]
+	path = extern/pastebin
+	url = https://github.com/r33drichards/pastebin
+[submodule "extern/kopf-agent"]
+	path = extern/kopf-agent
+	url = https://github.com/r33drichards/kopf-agent
+[submodule "extern/nix-k3s"]
+	path = extern/nix-k3s
+	url = https://github.com/r33drichards/nix-k3s
+[submodule "extern/tailscale-minimal"]
+	path = extern/tailscale-minimal
+	url = https://github.com/r33drichards/tailscale-minimal
+[submodule "extern/inf-aws"]
+	path = extern/inf-aws
+	url = https://github.com/r33drichards/inf-aws
