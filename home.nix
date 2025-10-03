@@ -53,7 +53,7 @@
         program = "${pkgs.writeShellScript "gpg-ledger" ''
           # Ensure ledger-gpg-agent is running
           if ! pgrep -f "ledger-gpg-agent.*--homedir.*\.gnupg-ledger" > /dev/null; then
-            ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
+            PATH="${pkgs.gnupg}/bin:$PATH" ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
             sleep 2
           fi
 
@@ -63,7 +63,7 @@
         openpgp.program = "${pkgs.writeShellScript "gpg-ledger" ''
           # Ensure ledger-gpg-agent is running
           if ! pgrep -f "ledger-gpg-agent.*--homedir.*\.gnupg-ledger" > /dev/null; then
-            ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
+            PATH="${pkgs.gnupg}/bin:$PATH" ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir $HOME/.gnupg-ledger --server --verbose &
             sleep 2
           fi
 
@@ -103,16 +103,31 @@
     enable = true;
     config = {
       ProgramArguments = [
-        "${pkgs.ledger-agent}/bin/ledger-gpg-agent"
-        "--homedir"
-        "/Users/wikigen/.gnupg-ledger"
-        "--server"
-        "--verbose"
+        "${pkgs.writeShellScript "ledger-gpg-agent-wrapper" ''
+          export PATH="${pkgs.gnupg}/bin:$PATH"
+          exec ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir /Users/wikigen/.gnupg-ledger --server --verbose
+        ''}"
       ];
       RunAtLoad = true;
       KeepAlive = false;
       StandardOutPath = "/Users/wikigen/.local/share/ledger-gpg-agent.log";
       StandardErrorPath = "/Users/wikigen/.local/share/ledger-gpg-agent.error.log";
+    };
+  };
+
+  # Ledger SSH Agent launchd service - starts on login
+  launchd.agents.ledger-ssh-agent = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.ledger-agent}/bin/ledger-agent"
+        "-d"
+        "ssh://ledger@localhost"
+      ];
+      RunAtLoad = true;
+      KeepAlive = false;
+      StandardOutPath = "/Users/wikigen/.local/share/ledger-ssh-agent.log";
+      StandardErrorPath = "/Users/wikigen/.local/share/ledger-ssh-agent.error.log";
     };
   };
 }
