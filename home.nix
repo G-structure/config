@@ -120,9 +120,10 @@
     enable = true;
     config = {
       ProgramArguments = [
-        "${pkgs.ledger-agent}/bin/ledger-agent"
-        "-d"
-        "ssh://ledger@localhost"
+        "${pkgs.writeShellScript "ledger-ssh-agent-wrapper" ''
+          export PATH="${pkgs.gnupg}/bin:$PATH"
+          exec ${pkgs.ledger-agent}/bin/ledger-agent -d ssh://ledger@localhost
+        ''}"
       ];
       RunAtLoad = true;
       KeepAlive = false;
