@@ -12,6 +12,8 @@
     # Development tools
     jq
     yq
+    tree
+    just
 
     # Cloud tools
     awscli2
