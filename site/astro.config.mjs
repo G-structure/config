@@ -3,8 +3,8 @@ import starlight from "@astrojs/starlight";
 
 export default defineConfig({
   output: "static",
-  // Optional: set your production site
-  // site: "https://your-domain.example",
+  site: "https://g-structure.github.io",
+  base: "/config",
   integrations: [
     starlight({
       title: "WikiGen's Config Documentation",
