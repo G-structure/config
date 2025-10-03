@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ config, pkgs, self, ... }:
 
 {
   # Basic system settings
@@ -27,7 +27,7 @@
   # Environment variables for SOPS/GPG
   environment.variables = {
     # Point SOPS to the Ledger GPG keyring
-    GNUPGHOME = "/Users/wikigen/.gnupg-ledger";
+    GNUPGHOME = "${config.users.users.wikigen.home}/.gnupg-ledger";
   };
 
   # System packages

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.stateVersion = "24.11";
@@ -107,13 +107,13 @@
       ProgramArguments = [
         "${pkgs.writeShellScript "ledger-gpg-agent-wrapper" ''
           export PATH="${pkgs.gnupg}/bin:$PATH"
-          exec ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir /Users/wikigen/.gnupg-ledger --server --verbose
+          exec ${pkgs.ledger-agent}/bin/ledger-gpg-agent --homedir ${config.home.homeDirectory}/.gnupg-ledger --server --verbose
         ''}"
       ];
       RunAtLoad = true;
       KeepAlive = false;
-      StandardOutPath = "/Users/wikigen/.local/share/ledger-gpg-agent.log";
-      StandardErrorPath = "/Users/wikigen/.local/share/ledger-gpg-agent.error.log";
+      StandardOutPath = "${config.home.homeDirectory}/.local/share/ledger-gpg-agent.log";
+      StandardErrorPath = "${config.home.homeDirectory}/.local/share/ledger-gpg-agent.error.log";
     };
   };
 
@@ -129,8 +129,8 @@
       ];
       RunAtLoad = true;
       KeepAlive = false;
-      StandardOutPath = "/Users/wikigen/.local/share/ledger-ssh-agent.log";
-      StandardErrorPath = "/Users/wikigen/.local/share/ledger-ssh-agent.error.log";
+      StandardOutPath = "${config.home.homeDirectory}/.local/share/ledger-ssh-agent.log";
+      StandardErrorPath = "${config.home.homeDirectory}/.local/share/ledger-ssh-agent.error.log";
     };
   };
 }
