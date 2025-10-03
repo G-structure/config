@@ -97,4 +97,22 @@
     GPG_TTY = "$(tty)";
     SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
   };
+
+  # Ledger GPG Agent launchd service - starts on login
+  launchd.agents.ledger-gpg-agent = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.ledger-agent}/bin/ledger-gpg-agent"
+        "--homedir"
+        "/Users/wikigen/.gnupg-ledger"
+        "--server"
+        "--verbose"
+      ];
+      RunAtLoad = true;
+      KeepAlive = false;
+      StandardOutPath = "/Users/wikigen/.local/share/ledger-gpg-agent.log";
+      StandardErrorPath = "/Users/wikigen/.local/share/ledger-gpg-agent.error.log";
+    };
+  };
 }
