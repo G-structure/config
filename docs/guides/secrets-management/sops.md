@@ -26,31 +26,31 @@ In this configuration:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        Your Workflow                         │
+│                        Your Workflow                        │
 ├─────────────────────────────────────────────────────────────┤
 │  1. Edit secret: sops secrets.yaml                          │
 │  2. SOPS decrypts using Ledger GPG key                      │
 │  3. Opens in editor (plaintext in memory only)              │
-│  4. You save changes                                         │
+│  4. You save changes                                        │
 │  5. SOPS re-encrypts with Ledger GPG key                    │
 │  6. Safe to commit encrypted file                           │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
-│                    Encryption Flow                           │
+│                    Encryption Flow                          │
 ├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Plain text secret                                           │
-│         │                                                    │
-│         ▼                                                    │
+│                                                             │
+│  Plain text secret                                          │
+│         │                                                   │
+│         ▼                                                   │
 │    SOPS encrypts ──────> Ledger GPG signs                   │
-│         │                     │                              │
-│         │                     ▼                              │
-│         │              [Confirm on device]                   │
-│         │                     │                              │
-│         ▼                     ▼                              │
+│         │                     │                             │
+│         │                     ▼                             │
+│         │              [Confirm on device]                  │
+│         │                     │                             │
+│         ▼                     ▼                             │
 │    Encrypted file (safe for Git)                            │
-│                                                              │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -80,7 +80,7 @@ darwinConfigurations."wikigen-mac" = darwin.lib.darwinSystem {
 };
 ```
 
-### 3. SOPS Configuration (darwin-configuration.nix)
+### 3. SOPS Configuration (nix/modules/secrets/sops.nix)
 
 ```nix
 sops = {
@@ -217,7 +217,7 @@ sops --encrypt secrets.yaml > secrets.enc.yaml
 
 ### Basic Secret Declaration
 
-In `darwin-configuration.nix`:
+In your host configuration (e.g., `hosts/wikigen-mac.nix`):
 
 ```nix
 {
@@ -268,7 +268,7 @@ sops.secrets."database/password" = {
 
 ### Using Secrets in Home Manager
 
-In `home.nix`:
+In your user config (e.g., `home/users/wikigen.nix`):
 
 ```nix
 { config, ... }:
@@ -672,10 +672,11 @@ sops -d --verbose secrets.yaml
 
 ## Related Documentation
 
-- [Ledger Setup Guide](./ledger_setup_guide.md) - Hardware wallet configuration
-- [GPG Setup](./gpg.md) - GPG configuration and usage
-- [Git Signing](./git-sign.md) - Using Ledger for commit signing
-- [Design Doc](./design.md) - Overall Nix configuration architecture
+- [Ledger Setup Guide](../hardware-security/ledger-setup.md) - Hardware wallet configuration
+- [Ledger Deep Dive](../hardware-security/ledger-overview.md) - Comprehensive Ledger guide
+- [GPG Signing](../hardware-security/gpg-signing.md) - GPG configuration and commit signing
+- [Design Doc](../../architecture/design.md) - Overall Nix configuration architecture
+- [Structure Guide](../../architecture/structure.md) - Modular configuration explained
 
 ## External References
 
