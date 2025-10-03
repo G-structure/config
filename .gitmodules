@@ -1,0 +1,9 @@
+[submodule "extern/app-ssh-agent"]
+	path = extern/app-ssh-agent
+	url = https://github.com/LedgerHQ/app-ssh-agent.git
+[submodule "extern/app-openpgp"]
+	path = extern/app-openpgp
+	url = https://github.com/LedgerHQ/app-openpgp.git
+[submodule "extern/trezor-agent"]
+	path = extern/trezor-agent
+	url = https://github.com/romanz/trezor-agent.git

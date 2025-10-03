@@ -19,12 +19,16 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [
+        (import ./nix/overlays/ledger-ssh-agent.nix)
+      ];
     };
   in
   {
     # Expose the ai-clis package
     packages.${system} = {
       ai-clis = pkgs.callPackage ./nix/packages/ai-clis.nix { };
+      ledger-ssh-agent = pkgs.ledger-ssh-agent;
       default = self.packages.${system}.ai-clis;
     };
 
@@ -38,6 +42,9 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
           home-manager.users.wikigen = import ./home.nix;
+          nixpkgs.overlays = [
+            (import ./nix/overlays/ledger-ssh-agent.nix)
+          ];
         }
       ];
       specialArgs = { inherit self; };
