@@ -13,6 +13,7 @@
     enableCompletion = true;
     shellAliases = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
       git = "ledger-agent wikigen@wikigens-MacBook-Pro -- git";
+      ssh = "ledger-agent wikigen@wikigens-MacBook-Pro -- ssh";
     };
     initContent = ''
       # Colima autostart
